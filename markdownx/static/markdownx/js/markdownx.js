@@ -483,11 +483,11 @@ var MarkdownX = function (parent, editor, preview) {
             }
             else if (response.type == 'video/mp4') {
                 insertImage(`
-                    <div style="display: flex; flex-direction: column">
-                        <video  widht="" height="500" controls>
-                            <source src="${response.image_path}" type="video/mp4" />
-                        </video>
-                    </div>`)
+<div style="display: flex; flex-direction: column">
+    <video  widht="" height="500" controls>
+        <source src="${response.image_path}" type="video/mp4" />
+    </video>
+</div>`)
                 utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
             }
             else {
