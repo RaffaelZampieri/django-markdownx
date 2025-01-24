@@ -481,6 +481,15 @@ var MarkdownX = function (parent, editor, preview) {
                 insertImage("![](\"" + response.image_path + "\")");
                 utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
             }
+            else if (response.type == 'video/mp4') {
+                insertImage(`
+                    <div style="display: flex; flex-direction: column">
+                        <video  widht="" height="500" controls>
+                            <source src="${response.image_path}" type="video/mp4" />
+                        </video>
+                    </div>`)
+                utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
+            }
             else {
                 console.error(XHR_RESPONSE_ERROR, response);
                 utils_1.triggerCustomEvent('markdownx.fileUploadError', properties.parent, [response]);
