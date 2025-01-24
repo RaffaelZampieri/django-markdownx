@@ -476,11 +476,6 @@ var MarkdownX = function (parent, editor, preview) {
                 insertImage(response.image_code);
                 utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
             }
-            else if (response.image_path) {
-                // ToDo: Deprecate.
-                insertImage("![](\"" + response.image_path + "\")");
-                utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
-            }
             else if (response.type == 'video/mp4') {
                 insertImage(`
 <div style="display: flex; flex-direction: column">
@@ -488,6 +483,11 @@ var MarkdownX = function (parent, editor, preview) {
         <source src="${response.image_path}" type="video/mp4" />
     </video>
 </div>`)
+                utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
+            }
+            else if (response.image_path) {
+                // ToDo: Deprecate.
+                insertImage("![](\"" + response.image_path + "\")");
                 utils_1.triggerCustomEvent('markdownx.fileUploadEnd', properties.parent, [response]);
             }
             else {
